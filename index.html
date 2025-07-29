@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sanjay Purohit | 🚀 Not Your Average Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for personality -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2f2e41;
+      --neon-1: #18f0b6;
+      --neon-2: #ff3d81;
+      --neon-3: #4d53ff;
+      --neon-4: #ffee00;
+      --white: #fff;
+      --glass: rgba(255,255,255,0.15);
+    }
+    html,body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      background: linear-gradient(135deg, #211835 0%, #29193d 45%, #4d53ff 100%);
+      min-height: 100vh;
+      color: var(--white);
+      transition: background 1s ease;
+    }
+    /* HERO SECTION ----------------------------------- */
+    .hero {
+      text-align: center;
+      padding: 94px 16px 40px 16px;
+      position: relative;
+    }
+    .hero-bg {
+      pointer-events:none;
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      animation: bgShift 16s linear infinite alternate;
+      opacity: 0.45;
+    }
+    @keyframes bgShift {
+      0% { filter: hue-rotate(0deg);}
+      100% { filter: hue-rotate(360deg);}
+    }
+    .avatar-pop {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 4px solid var(--neon-1);
+      object-fit: cover;
+      margin-bottom: 18px;
+      box-shadow: 0 0 30px 0 var(--neon-2);
+      background: #222;
+      animation: popIn 1.1s cubic-bezier(.37,1.22,.64,1.01);
+      z-index: 1;
+      position: relative;
+    }
+    @keyframes popIn { 0% {scale:0;} 60% {scale:1.2;} 100% {scale:1;} }
+    .hero h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      margin: 0 0 10px 0;
+      font-family: 'Orbitron', 'Nunito', Arial, sans-serif;
+      color: var(--neon-4);
+    }
+    .typewriter {
+      display: inline-block;
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg,var(--neon-1),var(--neon-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: blink-cursor 1s steps(1) infinite;
+    }
+    @keyframes blink-cursor {
+      0%,100% {border-right:3px solid #18f0b6;}
+      50% {border-right:3px solid transparent;}
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: #d3e5ff;
+      margin: 12px auto 36px auto;
+      max-width: 420px;
+    }
+    /* FUNNY EASTER EGG */
+    .easter-egg {
+      display:none;
+      background:var(--neon-4);
+      color:#222;
+      position:fixed;left:50%;bottom:55px;transform:translateX(-50%);
+      font-size:1.2rem;border-radius:16px;
+      padding:10px 22px;box-shadow:0 2px 16px #fff3798f; border:2px dashed #ff3d81;
+      z-index: 99;
+      font-weight:bold;
+      animation:bounce .7s cubic-bezier(.53,-0.34,.62,1.36) infinite alternate;
+    }
+    @keyframes bounce {to{transform:translateX(-50%) scale(1.05) translateY(-8px);} }
+    /* CTA BUTTON */
+    .hero-btn {
+      background: linear-gradient(90deg, var(--neon-1) 60%, var(--neon-2) 100%);
+      border: 0; outline: 0;
+      color: #211835;
+      font-size: 1.24rem;
+      border-radius: 30px;
+      padding: 13px 40px;
+      font-weight: bold;
+      margin-top: 25px;
+      cursor:pointer;
+      box-shadow:0 4px 24px #ff3d8169;
+      position:relative;overflow:hidden;
+      transition:.19s transform;
+    }
+    .hero-btn:hover { transform:scale(1.13) rotate(-2deg); background:linear-gradient(86deg,var(--neon-4),var(--neon-2));color:#232946;}
+    /* SCROLL DOWN ARROW */
+    .scroll-down {
+      margin-top:36px;
+      font-size: 2.6rem;
+      animation: arrow-bounce 1.3s infinite;
+      color:var(--neon-1);
+    }
+    @keyframes arrow-bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(16px);} }
+    /* MAIN CONTENT ----------------------------------- */
+    main {max-width: 870px; margin: -14px auto 24px auto; background: var(--glass); border-radius:18px; box-shadow:0 8px 40px #2222; padding:38px 5vw;}
+    h2 { color: var(--neon-2); font-size:1.48rem; letter-spacing:1.2px; margin:0 0 18px;}
+    /* ABOUT STATS */
+    .about-flex {display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;}
+    .about-stats {
+      text-align:center;font-size:1rem;
+      color:var(--neon-3);
+      background:rgba(240,251,250,0.10);
+      border-radius:12px;padding:21px 16px;min-width: 130px;margin-left:auto;margin-right:auto;
+      font-family:'Orbitron',sans-serif;
+      flex-shrink:0;
+      transition: box-shadow .3s;
+      box-shadow:0 2px 22px #00f9e0b2;
+    }
+    .about-stats strong {display:block;font-size:1.45em;color:var(--neon-1);}
+    .about-stats:hover {box-shadow:0 5px 40px #39ff146a;}
+    .about-desc {flex:1;min-width:200px;max-width:420px;font-size:1.1em;}
+    /* SKILLS */
+    .skills-list {display:flex; flex-wrap:wrap; gap:16px;}
+    .skill-card {
+      background:linear-gradient(95deg,var(--neon-3) 10%,var(--glass) 70%);
+      color:#fff; border-radius:13px; padding:16px 22px;
+      box-shadow:0 2px 18px #4d4cff87; min-width:130px; 
+      font-size:1.05em;
+      display:flex;align-items:center;gap:8px; position:relative; overflow:hidden; cursor:pointer;
+      transition:transform .18s,box-shadow .19s;
+    }
+    .skill-card::before {
+      content:'';
+      position:absolute; left:-30%;top:-35%;width:160%;height:160%;
+      background:radial-gradient(circle at 30% 60%,var(--neon-2)60%,rgba(0,0,0,0)99%);
+      opacity:0; z-index:0; transition:opacity .2s;
+      pointer-events:none;
+    }
+    .skill-card:hover {transform:scale(1.08) rotate(-1deg); box-shadow:0 5px 32px #ff3d8144;}
+    .skill-card:hover:before {opacity: 0.22;}
+    .skill-bar-container {background:rgba(255,255,255,0.16);margin:10px 0 0 0;border-radius:20px;height:7px;overflow: hidden;}
+    .skill-bar {height:8px; border-radius:10px; background:var(--neon-1);width:0;}
+    /* Reveal bars w/ js */
+    .skill-card.visible .skill-bar {transition:width 1.3s cubic-bezier(.46,1.13,.82,.72);}
+    /* PROJECTS */
+    .project-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin:.5em 0;}
+    .project-card {
+      background:linear-gradient(90deg,var(--glass) 60%,#ffd6ee33 100%);
+      color:var(--white); border-radius:17px; padding:18px 16px;
+      box-shadow:0 2px 22px #ff3d8130; border:2px solid #4444;
+      transition:transform .2s, box-shadow .2s;
+      position:relative;overflow:hidden;cursor:pointer;
+      min-height:155px;
+    }
+    .project-card::before {
+      content:'';position:absolute;top:-70px;left:60px;width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle,var(--neon-2)10%,rgba(255,61,129,0.06)70%,transparent 98%);
+      transform:scale(0.7);opacity:0.22;pointer-events:none;z-index:0;
+    }
+    .project-card:hover {transform:scale(1.09) rotate(1.5deg);box-shadow:0 6px 28px #ff3d81a1;}
+    .project-title {font-size:1.15rem; font-weight:700;color:var(--neon-1);}
+    /* FUN BADGE */
+    .fun-badge {
+      display:inline-block;  background: linear-gradient(93deg,var(--neon-4),var(--neon-3) 65%);
+      color:#211835;padding:4px 13px;border-radius:10px;font-size:0.98em;font-weight:700;margin: 3px 0 11px 0;transform:rotate(-6deg);
+      box-shadow:0 2px 9px #ffee005b,0 1px 24px #4d53ff3a;
+    }
+    /* CERTIFICATIONS */
+    .certs-list {display:flex;flex-wrap:wrap;gap:11px;}
+    .cert-badge {
+      background:linear-gradient(80deg,#18f0b6 60%,#fffbf7 100%);
+      color:var(--neon-3); border-radius:10px;padding:7px 17px;font-size:1em;font-weight:700;
+      box-shadow:0 2px 12px #19ffc054;letter-spacing:0.07em;
+      border:2px solid #ffffff12;
+      margin-top:3px; min-width:120px;text-align:center;
+    }
+    /* CONTACT */
+    .contact-list a { color:var(--neon-2); font-weight:600; text-decoration: none; transition:color .11s;}
+    .contact-list a:hover {color:var(--neon-4);text-shadow:0 0 6px var(--neon-1);}
+    .contact-list {list-style:none;padding:0;margin:0;}
+    .contact-list li{margin:.5em 0;}
+    /* RESPONSIVE */
+    @media(max-width:700px){
+      main {padding:22px 3vw;}
+      .hero {padding:70px 6px 22px;}
+      .about-flex {flex-direction:column;gap:10px;}
+      .about-stats {margin-bottom:12px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Gradient Hero Background -->
+  <canvas class="hero-bg" id="particles"></canvas>
+  <section class="hero">
+      <img class="avatar-pop" src="https://avatars.githubusercontent.com/u/37063559?v=4" alt="Sanjay's Avatar">
+      <h1 id="type-name"></h1>
+      <div id="type-desc" class="typewriter"></div>
+      <div class="hero-desc">Creative technologist blending code, color, and a spark of humor — ready to electrify your company!<br>
+      <span class="fun-badge">👾 Unleash the fun in frontend!</span></div>
+      <button class="hero-btn" onclick="document.querySelector('.scroll-down').scrollIntoView({behavior:'smooth'})">See More ↓</button>
+      <div class="scroll-down">⬇️</div>
+  </section>
+  <main>
+    <!-- ABOUT -->
+    <section>
+      <h2>About Me</h2>
+      <div class="about-flex">
+        <div class="about-stats">
+          <strong id="stat-projects">0</strong>
+          Projects Built
+        </div>
+        <div class="about-stats">
+          <strong id="stat-jokes">0</strong>
+          Jokes Written in Code
+        </div>
+        <div class="about-desc">
+          Hi, I'm <b>Sanjay Purohit</b> (the developer who puts the "pro" in "profile"). Whether it's data, web apps, or making recruiters smile, I deliver clever code with personality.
+          <br><br>
+          *Favorite Merge Request:* More memes in the code reviews!
+        </div>
+      </div>
+    </section>
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills & Endorsements</h2>
+      <div class="skills-list" id="skills">
+        <div class="skill-card" data-skill="90">
+          <span>HTML</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="86">
+          <span>CSS</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="84">
+          <span>JavaScript</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="70">
+          <span>Git</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="78">
+          <span>Figma</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="75">
+          <span>Tableau</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="85">
+          <span>Problem Solving</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="69">
+          <span>UI/UX Design</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+        <div class="skill-card" data-skill="100">
+          <span>Coffee Intake</span>
+          <div class="skill-bar-container"><div class="skill-bar"></div></div>
+        </div>
+      </div>
+    </section>
+    <!-- PROJECTS -->
+    <section>
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <div class="project-title">Smart Soil Monitoring System 🌱</div>
+          <span class="fun-badge">Auto-Irrigation... so even my plants have Crunch time off!</span>
+          <div>IoT, automation, dashboards—if only plants could RT my pull-requests.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Recipe Book App 🥘</div>
+          <span class="fun-badge">CRUD so good it could be a dish</span>
+          <ul>
+            <li>ASP.NET (C#), SQL Server, HTML/CSS</li>
+            <li>Designed & built for foodies who dream in tables—not just databases!</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Portfolio You’re Now Viewing ✨</div>
+          <span class="fun-badge">Meta as it gets</span>
+          <div>Responsive, animated, and a touch of humor in every section.</div>
+        </div>
+      </div>
+    </section>
+    <!-- CERTIFICATIONS -->
+    <section>
+      <h2>Certifications</h2>
+      <div class="certs-list">
+        <div class="cert-badge">Google Data Analytics</div>
+        <div class="cert-badge">Figma & CSS Web Design</div>
+        <div class="cert-badge">Git & GitHub (IBM)</div>
+        <div class="cert-badge">Data Structures (UCSD)</div>
+        <div class="cert-badge">UI/UX Design (IBM)</div>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact & Hire Me</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:sanjaybpurohit1414@gmail.com">📧 sanjaybpurohit1414@gmail.com</a></li>
+        <li><a href="tel:8433955962">📞 8433955962</a></li>
+        <li><a href="https://www.linkedin.com/in/sanjaybpurohit-14-" target="_blank">🔗 LinkedIn: sanjaybpurohit-14-</a></li>
+      </ul>
+    </section>
+  </main>
+  <div class="easter-egg">Whoever finds this: Yes, I debugged this at 3AM!</div>
+  <script>
+    // HERO TYPEWRITER & DESCRIPTION
+    const name = 'Sanjay Purohit';
+    const tagline = 'Developer. UX Fan. Code Wizard. ⚡️';
+    let i=0, j=0, text1='', text2='';
+    function type() {
+      if (i <= name.length) {
+        text1 = name.slice(0,i);
+        document.getElementById('type-name').textContent = text1 + (i%2===0?'|':'');
+        i++; setTimeout(type, 100);
+      } else if(j <= tagline.length) {
+        text2 = tagline.slice(0,j);
+        document.getElementById('type-desc').textContent = text2 + (j%2===0?'|':'');
+        j++; setTimeout(type, 60);
+      }
+    } type();
+
+    // FUNNY STATS COUNTER
+    let p = 0, jokes = 0;
+    setTimeout(()=> {
+      const pj = document.getElementById('stat-projects'), jk = document.getElementById('stat-jokes');
+      const incP = ()=> { if(p<99){p++;pj.textContent=p;setTimeout(incP,12);}};
+      const incJ = ()=> { if(jokes<7){jokes++;jk.textContent=jokes;setTimeout(incJ,120);}};
+      incP(); incJ();
+    }, 700);
+
+    // SKILL BARS GROW ON VIEW
+    let skillRevealed = false;
+    function showSkills(){
+      if(skillRevealed) return;
+      var rect = document.getElementById('skills').getBoundingClientRect();
+      if(rect.top < window.innerHeight-90){
+        skillRevealed = true;
+        document.querySelectorAll('.skill-card').forEach(c=>{
+          c.classList.add('visible');
+          setTimeout(()=>{
+            c.querySelector('.skill-bar').style.width = c.dataset.skill+'%';
+          },300);
+        });
+      }
+    }
+    window.addEventListener('scroll',showSkills);
+    // Focus for bar animation if loaded below fold
+    window.addEventListener('DOMContentLoaded',showSkills);
+
+    // Easter Egg Reveal when user scrolls to footer
+    window.addEventListener('scroll',()=>{
+      if((window.innerHeight+window.scrollY) >= (document.body.offsetHeight-60)){
+        document.querySelector('.easter-egg').style.display='block';
+      }
+    });
+
+    // ANIMATED BACKGROUND PARTICLES
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    let particles = [];
+    function resize(){
+      canvas.width = innerWidth*dpr;canvas.height=600*dpr;canvas.style.width = innerWidth+"px";canvas.style.height="600px";
+      ctx.setTransform(1,0,0,1,0,0);ctx.scale(dpr,dpr);
+    }
+    function makeParticles(){
+      particles = [];
+      let amount = Math.floor(innerWidth/33);
+      for(let i=0;i<amount;++i){
+        particles.push({
+          x:Math.random() * innerWidth,
+          y:Math.random() * 600,
+          r:8+8*Math.random(),
+          dx:-2+Math.random()*4,
+          dy:0.6+Math.random()*1.5,
+          color: [ 'var(--neon-1)','var(--neon-2)','var(--neon-3)','var(--neon-4)'][i%4]
+        });
+      }
+    }
+    function drawParticles(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(const p of particles){
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+        ctx.fillStyle=p.color;
+        ctx.globalAlpha=0.2 + (p.r/18);
+        ctx.shadowBlur=18;ctx.shadowColor=p.color; ctx.fill();
+        p.x+=p.dx;p.y+=p.dy;
+        if(p.x<0 || p.x>innerWidth) p.dx*=-1;
+        if(p.y>600){p.y=0;p.x=Math.random()*innerWidth;}
+      }ctx.globalAlpha=1;
+      requestAnimationFrame(drawParticles);
+    }
+    resize();makeParticles();drawParticles();
+    window.addEventListener('resize',()=>{resize();makeParticles();});
+  </script>
+</body>
+</html>
